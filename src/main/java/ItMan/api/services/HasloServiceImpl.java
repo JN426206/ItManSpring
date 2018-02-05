@@ -22,6 +22,11 @@ public class HasloServiceImpl implements  HasloService {
     }
 
     @Override
+    public Iterable<Haslo> getHasloByIdFirmy(Integer idFirmy) {
+        return this.hasloRepository.findHaslosByFirma_IdFirmy(idFirmy);
+    }
+
+    @Override
     public Haslo saveHaslo(Haslo haslo) {
         return this.hasloRepository.save(haslo);
     }

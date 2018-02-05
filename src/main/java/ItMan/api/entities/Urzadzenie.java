@@ -68,7 +68,7 @@ public class Urzadzenie {
     @Column(name = "model", nullable = false, length = 30)
     private String model;
 
-    @Column(name = "nrSeryjny", nullable = false, length = 150)
+    @Column(name = "nr_Seryjny", nullable = false, length = 150)
     private String nrSeryjny;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

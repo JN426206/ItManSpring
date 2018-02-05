@@ -8,6 +8,8 @@ public interface HasloService {
 
     Haslo getHasloById(Integer id);
 
+    Iterable<Haslo> getHasloByIdFirmy(Integer idFirmy);
+
     Haslo saveHaslo(Haslo haslo);
 
     boolean checkIfExist(Integer id);
