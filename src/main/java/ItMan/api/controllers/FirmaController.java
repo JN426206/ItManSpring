@@ -37,4 +37,10 @@ public class FirmaController {
         logger.info(idFirmy.toString());
         return firmaService.getFirmaById(idFirmy);
     }
+
+    @RequestMapping(value = "/firmy/{idFirmy}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void removeByIdFirmy(@PathVariable("idFirmy") Integer idFirmy){
+        logger.info(idFirmy.toString());
+        firmaService.removeFirma(idFirmy);
+    }
 }

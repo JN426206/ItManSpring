@@ -9,5 +9,7 @@ public interface FirmaService {
 
     Firma saveFirma(Firma firma);
 
+    void removeFirma(Integer id);
+
     Boolean checkIfExist(Integer id);
 }

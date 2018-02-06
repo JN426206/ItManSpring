@@ -24,9 +24,13 @@ public class FirmaServiceImpl implements FirmaService {
         return firmaRepository.findOne(id);
     }
 
+    @Override
     public Firma saveFirma(Firma firma){
         return firmaRepository.save(firma);
     }
+
+    @Override
+    public void removeFirma(Integer id) { firmaRepository.delete(id); }
 
     @Override
     public Boolean checkIfExist(Integer id){
