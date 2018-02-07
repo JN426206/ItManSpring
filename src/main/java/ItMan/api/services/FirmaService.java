@@ -11,5 +11,7 @@ public interface FirmaService {
 
     void removeFirma(Integer id);
 
+    Firma updateFirma(Firma firma);
+
     Boolean checkIfExist(Integer id);
 }

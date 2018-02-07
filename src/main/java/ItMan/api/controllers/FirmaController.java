@@ -43,4 +43,10 @@ public class FirmaController {
         logger.info(idFirmy.toString());
         firmaService.removeFirma(idFirmy);
     }
+
+    @RequestMapping(value = "/firmy", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Firma> update(@RequestBody @Valid @NotNull Firma firma) {
+        firmaService.saveFirma(firma);
+        return ResponseEntity.ok().body(firma);
+    }
 }

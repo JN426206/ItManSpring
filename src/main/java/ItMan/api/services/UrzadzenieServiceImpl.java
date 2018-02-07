@@ -22,6 +22,9 @@ public class UrzadzenieServiceImpl implements UrzadzenieService {
     }
 
     @Override
+    public void removeUrzadzenie(Integer id) { urzadzenieRepository.delete(id); }
+
+    @Override
     public Urzadzenie getUrzadzenieById(Integer id) {
         return this.urzadzenieRepository.findOne(id);
     }

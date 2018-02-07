@@ -2,9 +2,19 @@ package ItMan.api.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
+import ItMan.api.ParseDeserializer;
 
 import javax.persistence.*;
+import java.io.IOException;
 
 @Entity
 @Table(name = "urzadzenie")
@@ -71,6 +81,8 @@ public class Urzadzenie {
     @Column(name = "nr_Seryjny", nullable = false, length = 150)
     private String nrSeryjny;
 
+    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = ParseDeserializer.class)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "data_Utworzenia", nullable = false)
     private DateTime dataUtworzenia;

@@ -10,6 +10,8 @@ public interface UrzadzenieService {
 
     Iterable<Urzadzenie> getUrzadzeniaByIdFirmy(Integer id);
 
+    void removeUrzadzenie(Integer id);
+
     Urzadzenie saveUrzadzenie(Urzadzenie urzadzenie);
 
     boolean checkIfExist(Integer id);

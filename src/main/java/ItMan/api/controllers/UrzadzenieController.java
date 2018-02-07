@@ -2,6 +2,7 @@ package ItMan.api.controllers;
 
 import ItMan.api.entities.Urzadzenie;
 import ItMan.api.services.UrzadzenieService;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,8 @@ public class UrzadzenieController {
     }
 
     @RequestMapping(value = "/urzadzenia", method = RequestMethod.POST)
-    public ResponseEntity<Urzadzenie> create(@RequestBody @Valid @NotNull Urzadzenie urzadzenie) {
+    public ResponseEntity<Urzadzenie> create(@RequestBody @NotNull Urzadzenie urzadzenie) {
+        logger.info("Info"+urzadzenie.getDataUtworzenia().toString());
         urzadzenieService.saveUrzadzenie(urzadzenie);
         return ResponseEntity.ok().body(urzadzenie);
     }
@@ -41,5 +43,11 @@ public class UrzadzenieController {
     public Urzadzenie getByIdUrzadzenia(@PathVariable("idUrzadzenia") Integer idUrzadzenia){
         logger.info(idUrzadzenia.toString());
         return urzadzenieService.getUrzadzenieById(idUrzadzenia);
+    }
+
+    @RequestMapping(value = "/urzadzenia/urzadzenie/{idUrzadzenia}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void removeByIdFirmy(@PathVariable("idUrzadzenia") Integer idUrzadzenia){
+        logger.info(idUrzadzenia.toString());
+        urzadzenieService.removeUrzadzenie(idUrzadzenia);
     }
 }

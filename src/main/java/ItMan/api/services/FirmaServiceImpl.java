@@ -30,6 +30,9 @@ public class FirmaServiceImpl implements FirmaService {
     }
 
     @Override
+    public Firma updateFirma(Firma firma) { return firmaRepository.save(firma); }
+
+    @Override
     public void removeFirma(Integer id) { firmaRepository.delete(id); }
 
     @Override
