@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @RestController
@@ -24,6 +25,11 @@ public class UrzadzenieController {
     @RequestMapping(value = "/urzadzenia", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Urzadzenie> list(Model model) {
         return urzadzenieService.listAllUrzadzenia();
+    }
+
+    @RequestMapping(value = "/urzadzeniap/{page}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Urzadzenie> list(@PathVariable("page") Integer pageNr,@RequestParam("size") Optional<Integer> howManyOnPage) {
+        return urzadzenieService.listAllUrzadzeniaPagging(pageNr, howManyOnPage.orElse(2));
     }
 
     @RequestMapping(value = "/urzadzenia", method = RequestMethod.POST)
@@ -50,4 +56,6 @@ public class UrzadzenieController {
         logger.info(idUrzadzenia.toString());
         urzadzenieService.removeUrzadzenie(idUrzadzenia);
     }
+
+
 }

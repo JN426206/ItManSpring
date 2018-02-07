@@ -6,6 +6,8 @@ public interface UrzadzenieService {
 
     Iterable<Urzadzenie> listAllUrzadzenia();
 
+    Iterable<Urzadzenie> listAllUrzadzeniaPagging(Integer pageNr, Integer howManyOnPage);
+
     Urzadzenie getUrzadzenieById(Integer id);
 
     Iterable<Urzadzenie> getUrzadzeniaByIdFirmy(Integer id);

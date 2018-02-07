@@ -3,6 +3,7 @@ package ItMan.api.services;
 import ItMan.api.entities.Urzadzenie;
 import ItMan.api.repositories.UrzadzenieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +15,11 @@ public class UrzadzenieServiceImpl implements UrzadzenieService {
     @Override
     public Iterable<Urzadzenie> listAllUrzadzenia() {
         return this.urzadzenieRepository.findAll();
+    }
+
+    @Override
+    public Iterable<Urzadzenie> listAllUrzadzeniaPagging(Integer pageNr, Integer howManyOnPage) {
+        return urzadzenieRepository.findAll(new PageRequest(pageNr,howManyOnPage));
     }
 
     @Override
